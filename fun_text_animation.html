@@ -3,6 +3,8 @@
 <div class="text text2 anim2">Chicken.</div>
 <br />
 <div class="text text3 anim3">Carrot.</div>
+<br />
+<div class="text text4 anim4">Paper.</div>
 <style>
   html {
     font-family: Arial, Helvetica, sans-serif;
@@ -63,12 +65,26 @@
       transform: scale(1.6);
     }
   }
+  .anim4 {
+    display: inline-block;
+    animation: spinning infinite linear alternate-reverse 500ms;
+    margin-left: 4rem;
+  }
+  @keyframes spinning {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+  }
 </style>
 <script>
   const stopBtn = document.querySelector(".stopBtn");
   const text = document.querySelector(".text");
   const text2 = document.querySelector(".text2");
   const text3 = document.querySelector(".text3");
+  const text4 = document.querySelector(".text4");
 
   stopBtn.addEventListener("click", () => {
     let stopBtnLocal = document.querySelector(".stopBtn");
@@ -76,6 +92,7 @@
       text.classList.remove("anim1");
       text2.classList.remove("anim2");
       text3.classList.remove("anim3");
+      text4.classList.remove("anim4");
     }
     if (stopBtnLocal.textContent == "STOP") {
       stopBtnLocal.textContent = "Sicher?";
