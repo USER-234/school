@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabatt counter</title>
+  </head>
+  <body>
+    <div class="rabbs">
+      <div class="rab1">Rabatt</div>
+      <input type="text" class="rabInp1" />
+    </div>
+
+    <br />
+    <button class="plusBtn">plus</button>
+    <br />
+    <br />
+    <div class="result">Ergebnis:</div>
+    <button class="sumBtn">zusammenzahlen</button>
+  </body>
+  <script>
+    const rabbs = document.querySelector(".rabbs");
+    const plusBtn = document.querySelector(".plusBtn");
+    const rab1 = document.querySelector(".rab1");
+    const rabInp1 = document.querySelector(".rabInp1");
+    const result = document.querySelector(".result");
+    const sumBtn = document.querySelector(".sumBtn");
+
+    let rabState = 1;
+
+    plusBtn.addEventListener("click", () => {
+      rab1.textContent = "1. Rabatt";
+      rabState++;
+      extraRab = document.createElement("div");
+      extraRab.setAttribute("class", `rab${rabState}`);
+      extraRab.textContent = `${rabState}. Rabatt`;
+      rabbs.append(extraRab);
+
+      extraInp = document.createElement("input");
+      extraInp.setAttribute("class", `rabInp${rabState}`);
+      rabbs.append(extraInp);
+    });
+
+    sumBtn.addEventListener("click", () => {
+      let tempNum = null;
+      for (let i = 1; i < rabbs.childElementCount; i += 2) {
+        tempNum += Number(rabbs.children[i].value);
+      }
+      result.textContent = `Ergebnis: ${tempNum}`;
+    });
+  </script>
+</html>
